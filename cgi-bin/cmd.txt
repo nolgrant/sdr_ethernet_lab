@@ -1,0 +1,7 @@
+sudo httpd -p 8080 
+
+chmod -R 777 /home/student/web/
+
+gcc -o milestone1 milestone1.c
+
+gcc -shared -o streamIQ streamIQ.c

@@ -7,19 +7,23 @@
 
 int main(int argc, char *argv[]){
 
-    // printf("Num Args = %i\n", argc);
+      // char ipaddr[] = "10.0.0.66";
+      char *targetIP = "10.0.0.66";
+      int port = 8080;
+      int numPackets = 100;  
 
+    // printf("Num Args = %i\n", argc);
     if(argc != 4){
-        printf("Arguments must be in the following format: <IP> <Port> <NumPackets>\n");
-        printf("Example: \"./sendupdpacket 10.0.0.66 8080 100/\"");
-        return 0;
+      printf("Wrong # of arguments, using default <IP> <Port> <NumPackets>\n");
+
+    } else{
+      targetIP   = argv[1];
+      port       = atoi(argv[2]);
+      numPackets = atoi(argv[3]);
     }
 
-    char *targetIP = argv[1];
-    int port       = atoi(argv[2]);
-    int numPackets = atoi(argv[3]);
-    // printf("IP Address: %s\n", targetIP);
-    // printf("Number of packets: %d\n", numPackets);
+     printf("IP Address: %s:%d\n", targetIP, port);
+     printf("Number of packets: %d\n", numPackets);
 
     int sockfd;
     struct sockaddr_in servaddr;
@@ -62,7 +66,7 @@ int main(int argc, char *argv[]){
         // Filling server information
         servaddr.sin_family = AF_INET;
         servaddr.sin_port = htons(port);
-        inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
+        inet_pton(AF_INET, targetIP, &servaddr.sin_addr);
 
         // Send UDP packet
         sendto(sockfd, myArray, myArraySize, 0, (const struct sockaddr *)&servaddr, sizeof(servaddr));
