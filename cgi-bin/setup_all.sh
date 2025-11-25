@@ -9,5 +9,5 @@ echo "configuring Codec...<br>"
 ./configure_codec.sh
 echo "</p>"
 echo "starting stream...<br>"
-nohup ./streamPackets > streamPackets.log 2>&1 &
+nohup ./streamPackets 10.0.0.66 8080 > streamPackets.log 2>&1 &
 echo "<p><em>All Done!</em></p>" 
