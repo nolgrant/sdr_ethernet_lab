@@ -8,5 +8,6 @@ echo "</p></em><p>"
 echo "configuring Codec...<br>"
 ./configure_codec.sh
 echo "</p>"
-echo "you would start your UDP Streamer Program Here...<br>"
+echo "starting stream...<br>"
+nohup ./streamPackets > streamPackets.log 2>&1 &
 echo "<p><em>All Done!</em></p>" 
