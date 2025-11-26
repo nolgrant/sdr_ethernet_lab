@@ -1,0 +1,5 @@
+# Configuration of where to send UDP packets
+SERVER_IP=10.0.0.66
+
+# Port number to use
+SERVER_PORT=8080
